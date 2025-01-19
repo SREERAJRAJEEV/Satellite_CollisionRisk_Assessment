@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch Dashboard</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Satellite Launch Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <div class="dashboard">
+           
+            <div class="card">
+                <h2>Mission Details</h2>
+                <p>Launch Date: <strong>2025-02-15</strong></p>
+                <p>Satellite Name: <strong>StarTracker-X</strong></p>
+                <p>Orbit: <strong>LEO (Low Earth Orbit)</strong></p>
+            </div>
+
+            
+            <div class="card">
+                <h2>Launch Status</h2>
+                <p>Status: <strong>Ready</strong></p>
+                <button onclick="startLaunch()">Initiate Launch</button>
+            </div>
+
+            
+            <div class="card">
+                <h2>Live Telemetry</h2>
+                <p>Speed: <strong>0 km/s</strong></p>
+                <p>Altitude: <strong>0 km</strong></p>
+                <p>Status: <strong>Standby</strong></p>
+            </div>
+        </div>
+    </div>
+
+    
+        <p>&copy; 2025 Space Debris Tracker</p>
+   
+
+    <script>
+        // Simulated Launch Functionality
+        function startLaunch() {
+            alert("Launch initiated! Telemetry data will update shortly.");
+            
+            const telemetryCard = document.querySelectorAll('.card')[2];
+            telemetryCard.innerHTML = `
+                <h2>Live Telemetry</h2>
+                <p>Speed: <strong>7.8 km/s</strong></p>
+                <p>Altitude: <strong>500 km</strong></p>
+                <p>Status: <strong>In Orbit</strong></p>
+            `;
+        }
+    </script>
+</body>
+</html>
