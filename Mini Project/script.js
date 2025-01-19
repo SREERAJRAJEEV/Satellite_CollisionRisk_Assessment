@@ -1,63 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const satellite1Dropdown = document.getElementById("satellite1");
-  const satellite2Dropdown = document.getElementById("satellite2");
-  const riskCircle = document.querySelector(".risk-circle");
-  const riskValue = document.querySelector(".risk-value");
-  const collisionStatus = document.getElementById("collision-status");
-
-  function updateCollisionRisk() {
-      const satellite1 = satellite1Dropdown.value;
-      const satellite2 = satellite2Dropdown.value;
-
-      // Example risk percentage (replace with dynamic data fetching logic)
-      let riskPercentage = Math.floor(Math.random() * 100);
-
-      // Update risk circle
-      riskValue.textContent = `${riskPercentage}%`;
-
-      // Update circle color based on risk
-      riskCircle.className = "risk-circle"; // Reset classes
-      if (riskPercentage <= 30) {
-          riskCircle.classList.add("low-risk");
-          collisionStatus.textContent = "Will Collide: Low Risk";
-      } else if (riskPercentage <= 60) {
-          riskCircle.classList.add("moderate-risk");
-          collisionStatus.textContent = "Will Collide: Moderate Risk";
-      } else {
-          riskCircle.classList.add("high-risk");
-          collisionStatus.textContent = "Will Collide: High Risk";
-      }
-  }
-
-  // Add event listeners to dropdowns
-  satellite1Dropdown.addEventListener("change", updateCollisionRisk);
-  satellite2Dropdown.addEventListener("change", updateCollisionRisk);
-
-  // Initial update
-  updateCollisionRisk();
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Example risk percentage (you can dynamically update this based on your calculations)
-    const riskPercentage = 70;  // This will be dynamically set from the data
+    const satellite1Dropdown = document.getElementById("satellite1");
+    const satellite2Dropdown = document.getElementById("satellite2");
     const riskCircle = document.querySelector(".risk-circle");
     const riskValue = document.querySelector(".risk-value");
+    const collisionStatus = document.getElementById("collision-status");
 
-    // Update the collision risk percentage and color dynamically
-    riskValue.textContent = `${riskPercentage}%`;
+    function updateCollisionRisk() {
+        const satellite1 = satellite1Dropdown.value;
+        const satellite2 = satellite2Dropdown.value;
 
-    if (riskPercentage <= 30) {
-        // Low risk (Green)
-        riskCircle.classList.add("low-risk");
-    } else if (riskPercentage <= 60) {
-        // Moderate risk (Yellow)
-        riskCircle.classList.add("moderate-risk");
-    } else {
-        // High risk (Red)
-        riskCircle.classList.add("high-risk");
+        // Example risk percentage (replace with actual logic)
+        const riskPercentage = Math.floor(Math.random() * 100);
+
+        // Update risk circle and status
+        riskValue.textContent = `${riskPercentage}%`;
+        riskCircle.className = "risk-circle";
+        if (riskPercentage <= 30) {
+            riskCircle.classList.add("low-risk");
+            collisionStatus.textContent = "Will Collide: Low Risk";
+        } else if (riskPercentage <= 60) {
+            riskCircle.classList.add("moderate-risk");
+            collisionStatus.textContent = "Will Collide: Moderate Risk";
+        } else {
+            riskCircle.classList.add("high-risk");
+            collisionStatus.textContent = "Will Collide: High Risk";
+        }
     }
 
-    // List of satellites to populate the dropdowns
+    // Populate dropdowns dynamically
     const satellites = [
         "TIANQI 33", "TIANQI 34", "TIANQI 35", "TIANQI 36", "TJS-12", "CZ-3B R/B", 
         "2024-247B", "HAWK-11B", "2024-247D", "HAWK-11C", "HAWK-11A", "LIZZIESAT-2", 
@@ -102,12 +72,8 @@ document.addEventListener("DOMContentLoaded", function() {
         "CENTISPACE-1 S9", "CENTISPACE-1 S10", "CENTISPACE-1 S11", "CENTISPACE-1 S12", 
         "CENTISPACE-1 S13", "CENTISPACE-1 S14", "CENTISPACE-1 S15", "CENTISPACE-1 S16", 
         "JIELONG-3 R/B", "2025-010A", "2025-010B", "2025-010C", "2025-010D", "2025-011A"
-    ];
-
-    // Populate the dropdowns
-    const satelliteDropdowns = document.querySelectorAll(".dropdown select");
-
-    satelliteDropdowns.forEach(dropdown => {
+    ]; 
+    [satellite1Dropdown, satellite2Dropdown].forEach(dropdown => {
         satellites.forEach(satellite => {
             const option = document.createElement("option");
             option.value = satellite;
@@ -115,5 +81,13 @@ document.addEventListener("DOMContentLoaded", function() {
             dropdown.appendChild(option);
         });
     });
+
+    // Add event listeners
+    satellite1Dropdown.addEventListener("change", updateCollisionRisk);
+    satellite2Dropdown.addEventListener("change", updateCollisionRisk);
+
+    // Initial update
+    updateCollisionRisk();
 });
-  
+
+    
