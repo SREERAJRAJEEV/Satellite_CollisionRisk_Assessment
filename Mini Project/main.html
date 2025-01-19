@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>Dashboard</h1>
+            <p>Your real-time satellite collision risk dashboard</p>
+        </header>
+        <div class="dashboard-container">
+            <div class="dashboard">
+                <!-- Left Panel -->
+                <div class="panel">
+                    <h2>Satellite 1</h2>
+                    <img src="placeholder1.jpg" alt="Satellite 1 Image" class="satellite-image">
+                    <div class="graph-placeholder">
+                        <div class="loading-spinner"></div>
+                        <p>Loading Trajectory...</p>
+                    </div>
+                </div>
+
+                <!-- Center Panel -->
+                <div class="center-panel">
+                    <h2>Collision Risk Analysis</h2>
+                    <div class="dropdown">
+                        <label for="satellite1">Select Satellite 1:</label>
+                        <select id="satellite1">
+                            <option value="sat1">Satellite 1</option>
+                            <option value="sat2">Satellite 2</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <label for="satellite2">Select Satellite 2:</label>
+                        <select id="satellite2">
+                            <option value="sat3">Satellite 3</option>
+                            <option value="sat4">Satellite 4</option>
+                        </select>
+                    </div>
+                    <div class="risk-display">
+                        <div id="collision-status">Will Collide: Unknown</div>
+                        <div class="risk-circle">
+                            <span class="risk-value">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel -->
+                <div class="panel">
+                    <h2>Satellite 2</h2>
+                    <img src="placeholder2.jpg" alt="Satellite 2 Image" class="satellite-image">
+                    <div class="graph-placeholder">
+                        <div class="loading-spinner"></div>
+                        <p>Loading Trajectory...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 Space Exploration Project</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- Main Content in Dashboard -->
+<div class="center-panel">
+    <h3>Select Satellites</h3>
+    <div class="dropdown">
+      <label for="satellite1">Satellite 1:</label>
+      <select id="satellite1"></select>
+    </div>
+    <div class="dropdown">
+      <label for="satellite2">Satellite 2:</label>
+      <select id="satellite2"></select>
+    </div>
+    <button id="checkCollisionBtn">Check Collision</button>
+    <div class="risk-display">
+      <div class="risk-circle">
+        <span class="risk-value">--%</span>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Satellite 1</h3>
+    <img id="satellite1Image" class="satellite-image" src="https://via.placeholder.com/300?text=Satellite+1" alt="Satellite 1">
+    <div class="graph-placeholder">
+      <p>Trajectory Graph</p>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Satellite 2</h3>
+    <img id="satellite2Image" class="satellite-image" src="https://via.placeholder.com/300?text=Satellite+2" alt="Satellite 2">
+    <div class="graph-placeholder">
+      <p>Trajectory Graph</p>
+    </div>
+  </div>
+  
