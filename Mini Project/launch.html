@@ -3,128 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launch</title>
-    <link rel="stylesheet" href="styles.css"> 
-    <style>
-       
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-        .dashboard {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-        }
-
-        .card h2 {
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-
-        .card p {
-            font-size: 1rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 20px;
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Launch Satellite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="launch.css">
 </head>
 <body>
-    <header>
-        <h1>Satellite Launch</h1>
-    </header>
-
-    <div class="container">
-        <div class="dashboard">
-           
-            <div class="card">
-                <h2>Mission Details</h2>
-                <p>Launch Date: <strong>2025-02-15</strong></p>
-                <p>Satellite Name: <strong>StarTracker-X</strong></p>
-                <p>Orbit: <strong>LEO (Low Earth Orbit)</strong></p>
+    <div class="main-container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <h1>Launch Your Satellite</h1>
+                <p>Enter the necessary parameters to check for collision risks in LEO (Low Earth Orbit).</p>
             </div>
+        </header>
 
-            
-            <div class="card">
-                <h2>Launch Status</h2>
-                <p>Status: <strong>Ready</strong></p>
-                <button onclick="startLaunch()">Initiate Launch</button>
-            </div>
+        <!-- Form Section -->
+        <div class="form-container">
+            <form id="launch-form">
+                <div class="form-group">
+                    <label for="semi-major-axis">Semi-Major Axis (km)</label>
+                    <input type="number" id="semi-major-axis" name="semi-major-axis" min="6678" max="8378" required>
+                    <small>Range: 6678 – 8378 km (Altitude: 200 – 2000 km)</small>
+                </div>
 
-            
-            <div class="card">
-                <h2>Live Telemetry</h2>
-                <p>Speed: <strong>0 km/s</strong></p>
-                <p>Altitude: <strong>0 km</strong></p>
-                <p>Status: <strong>Standby</strong></p>
-            </div>
+                <div class="form-group">
+                    <label for="eccentricity">Eccentricity</label>
+                    <input type="number" id="eccentricity" name="eccentricity" min="0" max="0.25" step="0.01" required>
+                    <small>Range: 0 – 0.25 (Mostly near 0 for LEO)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="inclination">Inclination (°)</label>
+                    <input type="number" id="inclination" name="inclination" min="0" max="120" required>
+                    <small>Range: 0 – 120° (Sun-synchronous: 97°–98°)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="raan">Right Ascension of Ascending Node (RAAN) (°)</label>
+                    <input type="number" id="raan" name="raan" min="0" max="360" required>
+                    <small>Range: 0 – 360°</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="argument-of-perigee">Argument of Perigee (°)</label>
+                    <input type="number" id="argument-of-perigee" name="argument-of-perigee" min="0" max="360" required>
+                    <small>Range: 0 – 360°</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="mean-anomaly">Mean Anomaly (°)</label>
+                    <input type="number" id="mean-anomaly" name="mean-anomaly" min="0" max="360" required>
+                    <small>Range: 0 – 360°</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="launch-date">Planned Launch Date</label>
+                    <input type="date" id="launch-date" name="launch-date" required>
+                    <small>Default: Today's date</small>
+                </div>
+
+                <!-- Check Collision Button -->
+                <button type="button" class="btn" id="check-collision-btn">Check Collision</button>
+            </form>
         </div>
+
+        <!-- Collision Risk Display Section -->
+        <div class="collision-risk-container">
+            <h2>Collision Risk Analysis</h2>
+            <div class="risk-circle">
+                <span class="risk-value">0%</span>
+            </div>
+            <div id="collision-status">Collision Status: Unknown</div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2025 Satellite Collision Project | All Rights Reserved</p>
+        </footer>
     </div>
 
-    
-        <p>&copy; 2025 Space Debris Tracker</p>
-   
-
-    <script>
-        // Simulated Launch Functionality
-        function startLaunch() {
-            alert("Launch initiated! Telemetry data will update shortly.");
-            
-            const telemetryCard = document.querySelectorAll('.card')[2];
-            telemetryCard.innerHTML = `
-                <h2>Live Telemetry</h2>
-                <p>Speed: <strong>7.8 km/s</strong></p>
-                <p>Altitude: <strong>500 km</strong></p>
-                <p>Status: <strong>In Orbit</strong></p>
-            `;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
